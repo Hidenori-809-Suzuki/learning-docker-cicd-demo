@@ -1,0 +1,22 @@
+services:
+  api:
+    container_name: api
+    build: ./api
+    ports:
+      - 8080:8080
+    tty: true # bashがすぐに終了してしまうのを防ぐ
+    volumes:
+      - ./api:/workspace:cached
+
+  web:
+    container_name: web
+    build: ./web
+    ports:
+      - 3011:3000
+    environment:
+      - REACT_APP_API_SERVER=http://localhost:8080/api
+    tty: true # bashがすぐに終了してしまうのを防ぐ
+    volumes:
+      - ./web:/workspace:cached
+    depends_on:
+      - api
