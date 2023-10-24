@@ -1,0 +1,15 @@
+{
+    "name": "web-container",
+    "service": "web", // docker-compose.ymlで指定したサービス名を記述
+    "workspaceFolder": "/workspace",
+    "dockerComposeFile": "../../docker-compose.yml",
+    // ↓コンテナごとに採用したいエクステンションを記述
+    // moreinfoのidentifierに記載されている名前を記述
+    "customizations": {
+        "vscode":{
+            "extensions":[
+                "firsttris.vscode-jest-runner"
+            ]
+        }
+    }
+}
